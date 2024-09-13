@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twitter Video Downloader</title>
     <link rel="stylesheet" href="/static/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -19,10 +20,13 @@
 
         {% if video_title %}
             <p class="success">Download Successful! Your file is ready:</p>
-            <a class="download-link" href="/downloads/{{ video_title }}.mp4">Download {{ video_title }}</a>
+            <a class="download-link" href="/downloads/{{ video_title }}.mp4">
+                Download {{ video_title }}
+            </a>
         {% elif error %}
             <p class="error">Error: {{ error }}</p>
         {% endif %}
     </div>
 </body>
 </html>
+

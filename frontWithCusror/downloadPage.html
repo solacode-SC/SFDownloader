@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Downloader</title>
+    <link rel="stylesheet" href="downloadStyle.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="logo.png" alt="Logo">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="download-container">
+            <div class="youtube-logo">
+                <img src="img/youtube-logo.png" alt="YouTube Logo">
+            </div>
+            <div class="input-container">
+                <input type="text" id="videoUrl" placeholder="Enter YouTube video URL">
+                <button onclick="downloadVideo()">Download</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function downloadVideo() {
+            const videoUrl = document.getElementById('videoUrl').value;
+            // Here you would implement the actual download functionality
+            alert('Download started for: ' + videoUrl);
+        }
+    </script>
+</body>
+</html>
