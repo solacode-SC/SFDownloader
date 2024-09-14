@@ -8,33 +8,41 @@
 </head>
 <body>
     <header>
-        <img src="logo.png" alt="Logo">
-        <nav>
-            <ul>
+        <div class="header-container">
+            <img src="logo.png" alt="Logo">
+            <nav>
+                <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+        </div>
     </header>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1>Welcome to SFD The Ultimate
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Welcome to SFD The Ultimate
                 Social Media Video Downloader</h1>
             <p>Download videos from your favorite social media
                 platforms in just a few clicks! Fast, secure, and
                 user-friendly – perfect for offline viewing or
                 archiving content.</p>
             <button onclick="goToDownloadPage()">Start Download Now!</button>
-        </div>
-        <div class="hero-image">
-            <img src="img/hero-image.png" alt="Hero Image">
+            </div>
+            <div class="hero-image">
+                <img src="img/hero-image.png" alt="Hero Image">
+            </div>
         </div>
     </section>
 
+    <div class="download-button-container">
+        <button class="download-button">Download from</button>
+    </div>
+
     <section class="download-platforms">
-        <h2>Download from</h2>
+        <!-- <h2>Download from</h2> -->
         <div class="platform-logos">
             <img src="img/youtube-logo.png" alt="YouTube">
             <img src="img/twitter-logo.png" alt="Twitter">

@@ -49,7 +49,7 @@ nav ul li a:hover {
 
 .download-container {
     max-width: 700px;
-    margin: 200px auto;
+    margin: 150px auto;
     padding: 100px 30px;
     border: 3px solid #007bff;
     background-color: #007bff;
@@ -118,4 +118,147 @@ button {
 button:hover {
     background-color: #000107;
     color: #ffffff;
+}
+
+
+/* Download platforms section styles */
+.download-platforms {
+    padding: 2rem 2rem;
+    text-align: center;
+    background-color: #fff;
+    width: 60%;
+    border: 3px solid #007bff;
+    margin: 20px auto;
+    border-radius: 50px;
+}
+
+.download-platforms h2 {
+    margin-bottom: 2rem;
+    color: #007bff;
+}
+
+.platform-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.platform-logos img {
+    height: 120px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    cursor: pointer; /* Changes cursor to hand */
+}
+
+.platform-logos img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(13px 28px 62px 10px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1));
+}
+
+/* Add this if the images are not already wrapped in anchor tags */
+.platform-logos a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+
+
+.download-container {
+    max-width: 700px;
+    margin: 200px auto;
+    padding: 100px 30px;
+    border: 3px solid #007bff;
+    background-color: #007bff;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content-wrapper {
+    position: relative;
+    min-height: 60px; /* Adjust as needed */
+}
+
+.input-container, .download-options {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.input-container {
+    display: flex;
+}
+
+.input-container input[type="text"] {
+    flex-grow: 1;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+}
+
+.input-container button {
+    padding: 16px 20px;
+    background-color: #ffffff;
+    color: #007bff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.input-container button:hover {
+    background-color: #f0f0f0;
+}
+
+.download-options {
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.download-options.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.video-preview {
+    flex: 1;
+    padding-right: 15px;
+}
+
+.video-preview img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.quality-options {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.quality-btn {
+    padding: 10px;
+    background-color: #ffffff;
+    color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 5px;
+}
+
+.quality-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.hidden {
+    display: none;
 }

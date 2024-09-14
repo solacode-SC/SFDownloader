@@ -18,12 +18,20 @@ body {
 header {
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    /* padding: 1rem; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.header-container {
+    /* border: 1px solid #ddd; */
     padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 80%;
 }
-
 header img {
     height: 50px;
 }
@@ -51,13 +59,20 @@ nav ul li a:hover {
 /* Hero section styles */
 .hero {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #007bff;
+}
+.hero-container {
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 4rem 2rem;
+    width: 80%;
+    padding: 2rem 2rem;
     background-color: #007bff;
     color: #fff;
 }
-
 .hero-content {
     flex: 1;
     padding-right: 2rem;
@@ -102,7 +117,7 @@ nav ul li a:hover {
 
 /* Download platforms section styles */
 .download-platforms {
-    padding: 4rem 2rem;
+    padding: 3rem 2rem;
     text-align: center;
     background-color: #fff;
 }
@@ -135,4 +150,49 @@ nav ul li a:hover {
 .platform-logos a {
     display: inline-block;
     text-decoration: none;
+    
+}
+
+.download-button-container {
+    text-align: center;
+    margin-top: -30px;
+    margin-bottom: -30px;
+    position: relative;
+    z-index: 10;
+    background-color: #ffffff;
+}
+
+.download-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.download-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.download-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.download-platforms {
+    padding-top: 60px;
+    /* ... existing styles ... */
+}
+
+/* Add some margin to the hero section if needed */
+.hero {
+    margin-bottom: 60px;
+    background-color: #007bff;
 }
