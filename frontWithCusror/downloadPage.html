@@ -27,18 +27,24 @@
             <div class="content-wrapper">
                 <div id="inputSection" class="input-container">
                     <input type="text" id="videoUrl" placeholder="Enter YouTube video URL">
-                    <button onclick="showDownloadOptions()">Download</button>
+                    <button class="download-btn" onclick="showDownloadOptions()">Download</button>
                 </div>
                 <div id="downloadOptions" class="download-options hidden">
                     <div class="video-preview">
-                        <img id="videoThumbnail" src="" alt="Video Thumbnail">
+                        <img id="videoThumbnail" src="img/youtube-logo.png" alt="Video Thumbnail">
                     </div>
                     <div class="quality-options">
-                        <button class="quality-btn" data-quality="1080p">1080p</button>
-                        <button class="quality-btn" data-quality="720p">720p</button>
-                        <button class="quality-btn" data-quality="480p">480p</button>
-                        <button class="quality-btn" data-quality="360p">360p</button>
-                        <button class="quality-btn" data-quality="mp3">MP3</button>
+                        <div class="option-group video-options">
+                            <span class="option-title">Download as Video</span>
+                            <button class="quality-btn" data-quality="1080p">1080p</button>
+                            <button class="quality-btn" data-quality="720p">720p</button>
+                            <button class="quality-btn" data-quality="480p">480p</button>
+                            <button class="quality-btn" data-quality="360p">360p</button>
+                        </div>
+                        <div class="option-group audio-options">
+                            <span class="option-title">Convert to Audio</span>
+                            <button class="quality-btn" data-quality="mp3">MP3</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -61,16 +67,25 @@
             const videoId = extractVideoId(videoUrl);
             
             if (videoId) {
+                document.querySelector('.download-container').style.height="360px";
+
                 const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/0.jpg`;
                 document.getElementById('videoThumbnail').src = thumbnailUrl;
-                document.getElementById('inputSection').style.opacity = '0';
-                document.getElementById('inputSection').style.visibility = 'hidden';
-            
-                const downloadOptions = document.getElementById('downloadOptions');
-                downloadOptions.classList.remove('hidden');
-                setTimeout(() => {
-                    downloadOptions.classList.add('visible');
-                }, 50);
+                
+                const inputContainer = document.querySelector('.input-container');
+                const downloadOptions = document.querySelector('.download-options');
+                
+                // Hide input container
+                inputContainer.style.opacity = '0';
+                inputContainer.style.visibility = 'hidden';
+                
+                // Show download options
+                downloadOptions.style.opacity = '1';
+                downloadOptions.style.visibility = 'visible';
+                
+                // Adjust content wrapper height
+                const contentWrapper = document.querySelector('.content-wrapper');
+                contentWrapper.style.height = `${downloadOptions.offsetHeight}px`;
             } else {
                 alert('Please enter a valid YouTube URL');
             }
@@ -81,6 +96,29 @@
             const match = url.match(regExp);
             return (match && match[2].length === 11) ? match[2] : null;
         }
+
+        // Add this function to go back to the input container
+        function showInputContainer() {
+            const inputContainer = document.querySelector('.input-container');
+            const downloadOptions = document.querySelector('.download-options');
+            const contentWrapper = document.querySelector('.content-wrapper');
+            
+            // Show input container
+            inputContainer.style.opacity = '1';
+            inputContainer.style.visibility = 'visible';
+            
+            // Hide download options
+            downloadOptions.style.opacity = '0';
+            downloadOptions.style.visibility = 'hidden';
+            
+            // Reset content wrapper height
+            contentWrapper.style.height = 'auto';
+
+
+
+        }
+
+
     </script>
 </body>
 </html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Downloader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        select {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="button"] {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+        .size-info {
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>YouTube Video Downloader</h1>
+        <input type="text" id="videoUrl" placeholder="Enter YouTube video URL">
+        <select id="qualitySelect">
+            <option value="">Select quality</option>
+        </select>
+        <input type="button" value="Get Qualities" onclick="getQualities()">
+        <input type="button" value="Download" onclick="downloadVideo()">
+        <p id="message"></p>
+    </div>
+    <script>
+        function getQualities() {
+            const url = document.getElementById('videoUrl').value;
+            fetch('/qualities', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ url: url })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const qualitySelect = document.getElementById('qualitySelect');
+                qualitySelect.innerHTML = '<option value="">Select quality</option>'; // Clear existing options
+                if (data.success) {
+                    data.qualities.forEach(quality => {
+                        const option = document.createElement('option');
+                        option.value = quality.url;
+                        const sizeText = quality.filesize ? ` (${formatBytes(quality.filesize)})` : '';
+                        option.textContent = `${quality.quality}${sizeText}`;
+                        qualitySelect.appendChild(option);
+                    });
+                } else {
+                    document.getElementById('message').innerText = 'Error: ' + data.error;
+                }
+            })
+            .catch(error => {
+                document.getElementById('message').innerText = 'Network error: ' + error.message;
+            });
+        }
+
+        function downloadVideo() {
+            const url = document.getElementById('videoUrl').value;
+            const qualityUrl = document.getElementById('qualitySelect').value;
+            fetch('/download', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ url: url, quality_url: qualityUrl })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('message').innerText = 'Download started!';
+                } else {
+                    document.getElementById('message').innerText = 'Error: ' + data.error;
+                }
+            })
+            .catch(error => {
+                document.getElementById('message').innerText = 'Network error: ' + error.message;
+            });
+        }
+
+        // Utility function to format bytes
+        function formatBytes(bytes) {
+            if (bytes === undefined) return 'N/A';
+            if (bytes === 0) return '0 Byte';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+    </script>
+</body>
+</html>
+

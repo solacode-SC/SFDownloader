@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Video Quality</title>
+</head>
+<body>
+    <h1>Select Quality</h1>
+    <form action="/download_video" method="POST">
+        <input type="hidden" name="url" value="{{ url }}">
+        <select name="itag">
+            {% for stream in streams %}
+                <option value="{{ stream.itag }}">{{ stream.resolution }} - {{ stream.mime_type }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Download</button>
+    </form>
+</body>
+</html>
